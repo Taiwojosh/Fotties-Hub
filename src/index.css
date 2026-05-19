@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Outfit:wght@100..900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Fraunces", serif;
+  --font-sans: "Outfit", sans-serif;
+  
+  --color-butter: #FAF9F6;
+  --color-brand-brown: #1A1A1A;
+  --color-brand-gold: #C5A059;
+}
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    scroll-behavior: smooth;
+    overscroll-behavior-y: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-butter text-brand-brown font-sans selection:bg-brand-brown selection:text-butter;
+    overflow-x: hidden;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif tracking-tight leading-tight;
+  }
+
+  /* Allow selection only in specific areas like checkout */
+  input, textarea {
+    user-select: text;
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.glass-card {
+  @apply bg-white/80 backdrop-blur-sm border border-brand-brown/10 shadow-sm;
+}
+
+.btn-primary {
+  @apply bg-brand-brown text-butter px-6 py-2 rounded-full font-medium transition-all hover:bg-black hover:scale-105 active:scale-95;
+}
+
+.btn-secondary {
+  @apply border-2 border-brand-brown text-brand-brown px-6 py-2 rounded-full font-medium transition-all hover:bg-brand-brown hover:text-butter active:scale-95;
+}
+
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  @apply bg-brand-brown/10 rounded-full;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  @apply bg-brand-brown/20;
+}

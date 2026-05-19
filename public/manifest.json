@@ -1,0 +1,17 @@
+{
+  "name": "Doms Collection - Premium Leather Palms",
+  "short_name": "Doms Collection",
+  "description": "Step into the extraordinary with Doms Collection. Specialized in premium leather palms, sandals, slides, and corporate shoes in Lagos.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAF3E0",
+  "theme_color": "#8B4513",
+  "icons": [
+    {
+      "src": "https://ik.imagekit.io/ifektive/Publick/20260516_091707.png?updatedAt=1779095595258",
+      "sizes": "1000x1000",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
