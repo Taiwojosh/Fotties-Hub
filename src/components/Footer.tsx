@@ -25,7 +25,7 @@ export const Footer: React.FC<FooterProps> = ({ setView }) => {
           <div className="col-span-1 md:col-span-1 flex flex-col items-start text-left">
             {!logoError ? (
               <img 
-                src="https://ik.imagekit.io/ifektive/Publick/20260516_091707.png?updatedAt=1779095595258" 
+                src="https://ik.imagekit.io/ifektive/Publick/20260516_091707.png?updatedAt=1779199590151" 
                 alt="Doms Collection Logo" 
                 className="h-20 object-contain mb-4 bg-white/10 rounded-xl p-2" 
                 onError={() => setLogoError(true)}

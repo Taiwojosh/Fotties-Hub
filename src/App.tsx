@@ -133,7 +133,7 @@ export default function App() {
 
   if (productsLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-butter">
+      <div className="fixed inset-0 flex items-center justify-center bg-butter z-[1000]">
         <div className="flex flex-col items-center gap-6 text-brand-brown">
           <div className="relative">
             <Loader2 className="animate-spin text-brand-gold" size={48} strokeWidth={0.8} />
@@ -340,7 +340,7 @@ export default function App() {
           {/* Remove unused menu and wears sections */}
 
           {view === 'reels' && (
-            <Suspense fallback={<div className="h-screen flex items-center justify-center"><Loader2 className="animate-spin text-brand-gold" size={48} /></div>}>
+            <Suspense fallback={<div className="fixed inset-0 flex items-center justify-center bg-butter z-[100]"><Loader2 className="animate-spin text-brand-gold" size={48} /></div>}>
               <ProductReels 
                 products={[...products, ...wears]} 
                 categories={CATEGORIES}
@@ -353,7 +353,7 @@ export default function App() {
           )}
 
           {view === 'best-sellers' && (
-            <Suspense fallback={<div className="h-screen flex items-center justify-center"><Loader2 className="animate-spin text-brand-gold" size={48} /></div>}>
+            <Suspense fallback={<div className="fixed inset-0 flex items-center justify-center bg-butter z-[100]"><Loader2 className="animate-spin text-brand-gold" size={48} /></div>}>
               <PopularRank 
                 products={bestSellers} 
                 onAddToCart={addToCart} 

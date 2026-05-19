@@ -24,7 +24,7 @@ const Logo: React.FC<{ className?: string }> = ({ className = "h-16" }) => {
 
   return (
     <img 
-      src="https://ik.imagekit.io/ifektive/Publick/20260516_091707.png?updatedAt=1779095595258" 
+      src="https://ik.imagekit.io/ifektive/Publick/20260516_091707.png?updatedAt=1779199590151" 
       alt="Doms Collection Logo" 
       className={`object-contain ${className}`}
       onError={() => {
