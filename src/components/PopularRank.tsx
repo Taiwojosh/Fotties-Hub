@@ -99,7 +99,7 @@ export const PopularRank: React.FC<PopularRankProps> = ({ products, onAddToCart,
                 <div className="w-full md:w-auto flex md:flex-col gap-3">
                   {isZeroPrice ? (
                     <a 
-                      href={`https://wa.me/2349082259197?text=Hello Doms Collection, I am interested in inquiring about ${product.name}`}
+                      href={`https://wa.me/2349082259197?text=Hello Dams Collection, I am interested in inquiring about ${product.name}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex-1 md:w-20 h-16 md:h-20 flex items-center justify-center bg-brand-brown text-brand-gold rounded-[1.5rem] hover:bg-black transition-all duration-500 shadow-xl shadow-black/10"

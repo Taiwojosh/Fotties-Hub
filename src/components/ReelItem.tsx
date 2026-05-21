@@ -16,7 +16,7 @@ export const ReelItem: React.FC<ReelItemProps> = ({ product, onAddToCart, onShar
 
   const handleInquire = (e: React.MouseEvent) => {
     e.stopPropagation();
-    const message = `Hello Doms Collection! I'm interested in the "${product.name}". Could you please provide more details and pricing?`;
+    const message = `Hello Dams Collection! I'm interested in the "${product.name}". Could you please provide more details and pricing?`;
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank');
   };
 

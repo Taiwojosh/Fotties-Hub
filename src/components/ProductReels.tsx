@@ -70,10 +70,10 @@ export const ProductReels: React.FC<ProductReelsProps> = ({
   const handleShare = async (e: React.MouseEvent, product?: Product) => {
     e.stopPropagation();
     const shareData = {
-      title: 'Doms Collection Premium Footwear',
+      title: 'Dams Collection Premium Footwear',
       text: product 
-        ? `Check out these ${product.name} at Doms Collection! 👟✨`
-        : 'Step into the extraordinary with Doms Collection Premium Footwear. ✨',
+        ? `Check out these ${product.name} at Dams Collection! 👟✨`
+        : 'Step into the extraordinary with Dams Collection Premium Footwear. ✨',
       url: window.location.origin
     };
 

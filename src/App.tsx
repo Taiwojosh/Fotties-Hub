@@ -139,7 +139,7 @@ export default function App() {
             <Loader2 className="animate-spin text-brand-gold" size={48} strokeWidth={0.8} />
             <div className="absolute inset-0 animate-ping opacity-20 bg-brand-gold rounded-full" />
           </div>
-          <p className="font-serif font-bold text-2xl tracking-tighter animate-pulse">Doms Collection</p>
+          <p className="font-serif font-bold text-2xl tracking-tighter animate-pulse">Dams Collection</p>
         </div>
       </div>
     );
@@ -192,7 +192,7 @@ export default function App() {
                 <div className="absolute inset-0 z-0">
                   <img 
                     src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=2000&auto=format&fit=crop" 
-                    alt="Doms Collection Hero" 
+                    alt="Dams Collection Hero" 
                     className="w-full h-full object-cover brightness-50"
                     referrerPolicy="no-referrer"
                   />
@@ -205,7 +205,7 @@ export default function App() {
                     className="max-w-2xl"
                   >
                     <span className="inline-block bg-brand-gold text-white px-5 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.4em] mb-6 shadow-sm">
-                      Doms Collection Luxury
+                      Dams Collection Luxury
                     </span>
                     <h1 className="text-6xl md:text-[10rem] font-serif font-black mb-10 leading-[0.8] tracking-tighter">
                       Beyond <br />
@@ -299,13 +299,13 @@ export default function App() {
                   </div>
                   <div className="glass-card rounded-3xl p-8 md:p-12 space-y-6 leading-relaxed text-brand-brown/80">
                     <p>
-                      Doms Collection was founded on the principle that footwear is more than just an accessory—it's the foundation of your journey. We curate a premium collection of leather palms, sandals, and slides that blend timeless craftsmanship with modern innovation.
+                      Dams Collection was founded on the principle that footwear is more than just an accessory—it's the foundation of your journey. We curate a premium collection of leather palms, sandals, and slides that blend timeless craftsmanship with modern innovation.
                     </p>
                     <p>
-                      Our philosophy is simple: <strong>Style, Comfort, and Durability.</strong> We believe that every step you take should be supported by the highest quality materials and ergonomic design. Whether you're conquering the boardroom or the city streets, Doms Collection has the perfect fit for your lifestyle.
+                      Our philosophy is simple: <strong>Style, Comfort, and Durability.</strong> We believe that every step you take should be supported by the highest quality materials and ergonomic design. Whether you're conquering the boardroom or the city streets, Dams Collection has the perfect fit for your lifestyle.
                     </p>
                     <p>
-                      Beyond being a store, we are a footwear destination. We specialize in providing bespoke shoe-care advice to ensure your Doms Collection stays as extraordinary as the day you first stepped into it.
+                      Beyond being a store, we are a footwear destination. We specialize in providing bespoke shoe-care advice to ensure your Dams Collection stays as extraordinary as the day you first stepped into it.
                     </p>
                     <div className="pt-8 border-t border-brand-brown/10 flex flex-col items-center gap-6">
                       <div className="text-center">
@@ -435,7 +435,7 @@ export default function App() {
                     <p className="text-brand-brown/60">
                       We check our email regularly and will get back to you as soon as possible.
                     </p>
-                    <a href={`mailto:${EMAIL}?subject=Inquiry from Doms Collection website`} className="btn-primary w-full md:w-auto inline-flex items-center justify-center">
+                    <a href={`mailto:${EMAIL}?subject=Inquiry from Dams Collection website`} className="btn-primary w-full md:w-auto inline-flex items-center justify-center">
                       <Mail size={18} strokeWidth={1.2} fill="currentColor" fillOpacity={0.1} className="mr-2" /> Send an Email
                     </a>
                   </div>

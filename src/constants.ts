@@ -10,7 +10,7 @@ export const BEST_SELLERS_GOOGLE_SHEET_CSV_URL: string = '';
 export const FALLBACK_PRODUCTS: Product[] = [
   {
     id: 's1',
-    name: 'Doms Collection Classic Leather Palm',
+    name: 'Dams Collection Classic Leather Palm',
     price: 35000,
     category: 'Leather Palm',
     image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1000&auto=format&fit=crop',
@@ -46,7 +46,7 @@ export const FALLBACK_PRODUCTS: Product[] = [
   },
   {
     id: 's5',
-    name: 'Doms Collection Signature Palm',
+    name: 'Dams Collection Signature Palm',
     price: 48000,
     category: 'Leather Palm',
     image: 'https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?q=80&w=1000&auto=format&fit=crop',
@@ -68,7 +68,7 @@ export const FALLBACK_WEARS: Product[] = [];
 export const FALLBACK_BEST_SELLERS: Product[] = [
   {
     id: 's1',
-    name: 'Doms Collection Classic Leather Palm',
+    name: 'Dams Collection Classic Leather Palm',
     price: 35000,
     category: 'Leather Palm',
     image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1000&auto=format&fit=crop',
@@ -86,7 +86,7 @@ export const FALLBACK_BEST_SELLERS: Product[] = [
   },
   {
     id: 's5',
-    name: 'Doms Collection Signature Palm',
+    name: 'Dams Collection Signature Palm',
     price: 48000,
     category: 'Leather Palm',
     image: 'https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?q=80&w=1000&auto=format&fit=crop',
@@ -104,5 +104,5 @@ export const CATEGORIES = [
 ];
 
 export const WHATSAPP_NUMBER = '2348072562317';
-export const EMAIL = 'domscollections01@gmail.com';
+export const EMAIL = 'damscollections01@gmail.com';
 

@@ -16,7 +16,7 @@ const Logo: React.FC<{ className?: string }> = ({ className = "h-16" }) => {
   if (error) {
     return (
       <div className="flex flex-col">
-        <span className="text-xl font-serif font-bold text-brand-brown leading-tight tracking-tighter uppercase whitespace-nowrap">Doms Collection</span>
+        <span className="text-xl font-serif font-bold text-brand-brown leading-tight tracking-tighter uppercase whitespace-nowrap">Dams Collection</span>
         <span className="text-[10px] tracking-[0.3em] text-brand-gold font-bold uppercase">Premium Footwear</span>
       </div>
     );
@@ -25,7 +25,7 @@ const Logo: React.FC<{ className?: string }> = ({ className = "h-16" }) => {
   return (
     <img 
       src="https://ik.imagekit.io/ifektive/Publick/20260516_091707.png?updatedAt=1779199590151" 
-      alt="Doms Collection Logo" 
+      alt="Dams Collection Logo" 
       className={`object-contain ${className}`}
       onError={() => {
         console.warn("Logo image failed to load, falling back to text.");

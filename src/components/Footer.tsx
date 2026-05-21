@@ -12,7 +12,7 @@ export const Footer: React.FC<FooterProps> = ({ setView }) => {
 
   const LogoFallback = () => (
     <div className="flex flex-col mb-4">
-      <span className="text-2xl font-serif font-bold text-butter leading-tight tracking-tighter uppercase whitespace-nowrap">Doms Collection</span>
+      <span className="text-2xl font-serif font-bold text-butter leading-tight tracking-tighter uppercase whitespace-nowrap">Dams Collection</span>
       <span className="text-[10px] tracking-[0.3em] text-brand-gold font-bold uppercase">Premium Footwear</span>
     </div>
   );
@@ -26,7 +26,7 @@ export const Footer: React.FC<FooterProps> = ({ setView }) => {
             {!logoError ? (
               <img 
                 src="https://ik.imagekit.io/ifektive/Publick/20260516_091707.png?updatedAt=1779199590151" 
-                alt="Doms Collection Logo" 
+                alt="Dams Collection Logo" 
                 className="h-20 object-contain mb-4 bg-white/10 rounded-xl p-2" 
                 onError={() => setLogoError(true)}
               />

@@ -67,7 +67,7 @@ export const Checkout: React.FC<CheckoutProps> = ({ cartItems, onSuccess }) => {
         .map(item => `${item.name} x${item.quantity} = ₦${(item.price * item.quantity).toLocaleString()}`)
         .join('\n');
 
-      const message = `*New Order from Doms Collection*\n` +
+      const message = `*New Order from Dams Collection*\n` +
         `Order ID: #${newOrder.id.toUpperCase()}\n` +
         `Name: ${formData.fullName}\n` +
         `Phone: ${formData.phone}\n` +

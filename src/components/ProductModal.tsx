@@ -15,7 +15,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({ product, isOpen, onC
   const isZeroPrice = product.price === 0;
 
   const handleInquire = () => {
-    const message = `Hello Doms Collection! I'm interested in the "${product.name}". Could you please provide more details and pricing?`;
+    const message = `Hello Dams Collection! I'm interested in the "${product.name}". Could you please provide more details and pricing?`;
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank');
   };
 
