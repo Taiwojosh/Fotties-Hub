@@ -38,12 +38,13 @@ service cloud.firestore {
     }
 
     function isValidProduct(data) {
-      return data.keys().hasAll(['id', 'name', 'price', 'category', 'image']) &&
+      return data.keys().hasAll(['id', 'name', 'price', 'category', 'imageUrls', 'vendorId']) &&
              data.id is string && data.id.size() >= 1 &&
              data.name is string && data.name.size() >= 1 && data.name.size() <= 200 &&
              data.price is number && data.price >= 0 &&
              data.category is string &&
-             data.image is string && data.image.size() <= 1000;
+             data.imageUrls is list &&
+             data.vendorId is string;
     }
 
     function isValidOrder(data) {
@@ -76,9 +77,24 @@ service cloud.firestore {
              data.createdAt is timestamp;
     }
 
+    function isValidAuditLog(data) {
+      return data.keys().hasAll(['id', 'productId', 'productName', 'deletedBy', 'deletedAt']) &&
+             data.id is string && data.id.size() >= 1 &&
+             data.productId is string && data.productId.size() >= 1 &&
+             data.productName is string && data.productName.size() >= 1 && data.productName.size() <= 200 &&
+             data.deletedBy is string && data.deletedBy.size() >= 5 && data.deletedBy.size() <= 254 &&
+             data.deletedAt is timestamp;
+    }
+
     // ===============================================================
     // Collection Rules
     // ===============================================================
+
+    // Vendors
+    match /vendors/{vendorId} {
+      allow read, write: if isSignedIn() && request.auth.uid == vendorId;
+      allow read: if isAdmin();
+    }
 
     // User Profiles
     match /users/{userId} {
@@ -90,8 +106,7 @@ service cloud.firestore {
 
     // Products
     match /products/{productId} {
-      allow read: if true;
-      allow write: if isAdmin();
+      allow read, write: if true;
     }
 
     // Orders
@@ -132,6 +147,17 @@ service cloud.firestore {
     match /admins/{adminId} {
       allow read: if isSignedIn();
       allow write: if false; // Only manageable via Firebase Console or special script
+    }
+
+    // Audit Logs
+    match /audit_logs/{logId} {
+      allow read, create: if true;
+      allow update, delete: if false;
+    }
+
+    // Application Settings (including Google Sheet URLs)
+    match /settings/{settingId} {
+      allow read, write: if true;
     }
   }
 }

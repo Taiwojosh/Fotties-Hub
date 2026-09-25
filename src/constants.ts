@@ -1,7 +1,14 @@
 import { Product } from './types';
 
 // ============================================================================
-// GOOGLE SHEETS INTEGRATION
+// BRAND ASSETS & CONTACT
+// ============================================================================
+export const BRAND_LOGO_URL: string = 'https://ik.imagekit.io/ifektive/Publick/20260607_145936.png';
+export const WHATSAPP_NUMBER = '2348072562317';
+export const EMAIL = 'damscollections01@gmail.com';
+
+// ============================================================================
+// GOOGLE SHEETS INTEGRATION (Primary live catalog source for max speed)
 // ============================================================================
 export const GOOGLE_SHEET_CSV_URL: string = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQ64HYxRNkxvtCTkfCVcn01NHicEqUtNkTWpHu-JuV0b0ezV6nx6r7sKP6OolJVJOoJoOCSIWQ-61Uk/pub?output=csv'; 
 export const WEARS_GOOGLE_SHEET_CSV_URL: string = '';
@@ -102,7 +109,4 @@ export const CATEGORIES = [
   'Slides',
   'Corporate',
 ];
-
-export const WHATSAPP_NUMBER = '2348072562317';
-export const EMAIL = 'damscollections01@gmail.com';
 

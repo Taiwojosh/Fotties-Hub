@@ -22,11 +22,24 @@
         "name": { "type": "string" },
         "price": { "type": "number" },
         "category": { "type": "string" },
-        "image": { "type": "string" },
+        "imageUrls": { "type": "array", "items": { "type": "string" } },
         "description": { "type": "string" },
-        "productType": { "type": "string", "enum": ["treat", "wear"] }
+        "productType": { "type": "string", "enum": ["treat", "wear"] },
+        "vendorId": { "type": "string", "description": "ID of the vendor" }
       },
-      "required": ["id", "name", "price", "category", "image"]
+      "required": ["id", "name", "price", "category", "imageUrls", "vendorId"]
+    },
+    "Vendor": {
+      "title": "Vendor",
+      "description": "Vendor information",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "Vendor User ID" },
+        "shopName": { "type": "string", "description": "Name of the shop" },
+        "email": { "type": "string", "description": "Vendor email address" },
+        "geminiApiKey": { "type": "string", "description": "Vendor's Gemini API Key" }
+      },
+      "required": ["uid", "shopName", "email"]
     },
     "Order": {
       "title": "Order",
@@ -71,6 +84,33 @@
         "createdAt": { "type": "timestamp" }
       },
       "required": ["productId", "userId", "authorName", "rating", "comment", "createdAt"]
+    },
+    "AuditLog": {
+      "title": "AuditLog",
+      "description": "Log entry tracking product deletion events and admin activity",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "productId": { "type": "string" },
+        "productName": { "type": "string" },
+        "productType": { "type": "string" },
+        "category": { "type": "string" },
+        "price": { "type": "number" },
+        "deletedBy": { "type": "string" },
+        "deletedAt": { "type": "timestamp" }
+      },
+      "required": ["id", "productId", "productName", "deletedBy", "deletedAt"]
+    },
+    "Setting": {
+      "title": "Setting",
+      "description": "App configurations such as Google Sheets URLs",
+      "type": "object",
+      "properties": {
+        "treatsUrl": { "type": "string" },
+        "wearsUrl": { "type": "string" },
+        "bestSellersUrl": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      }
     }
   },
   "firestore": {
@@ -81,6 +121,10 @@
     "/products/{productId}": {
       "schema": { "$ref": "Product" },
       "description": "Store products"
+    },
+    "/vendors/{vendorId}": {
+      "schema": { "$ref": "Vendor" },
+      "description": "Store vendors"
     },
     "/orders/{orderId}": {
       "schema": { "$ref": "Order" },
@@ -93,6 +137,14 @@
     "/reviews/{reviewId}": {
       "schema": { "$ref": "Review" },
       "description": "Comments on product reels"
+    },
+    "/audit_logs/{logId}": {
+      "schema": { "$ref": "AuditLog" },
+      "description": "Admin action audit logs"
+    },
+    "/settings/{settingId}": {
+      "schema": { "$ref": "Setting" },
+      "description": "App settings configurations"
     }
   }
 }

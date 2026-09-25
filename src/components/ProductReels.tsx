@@ -27,6 +27,7 @@ export const ProductReels: React.FC<ProductReelsProps> = ({
   const [category, setCategory] = React.useState('All');
   const [searchQuery, setSearchQuery] = React.useState('');
   const [showFilters, setShowFilters] = React.useState(false);
+  const [copyToast, setCopyToast] = React.useState(false);
   const containerRef = React.useRef<HTMLDivElement>(null);
 
   const filteredProducts = products.filter(p => {
@@ -82,7 +83,8 @@ export const ProductReels: React.FC<ProductReelsProps> = ({
         await navigator.share(shareData);
       } else {
         await navigator.clipboard.writeText(`${shareData.text} ${shareData.url}`);
-        alert('Link copied! 🛍️');
+        setCopyToast(true);
+        setTimeout(() => setCopyToast(false), 2500);
       }
     } catch (err) {
       console.error('Error sharing:', err);
@@ -161,7 +163,7 @@ export const ProductReels: React.FC<ProductReelsProps> = ({
                 <input 
                   type="text" 
                   placeholder="Search footwear..."
-                  value={searchQuery}
+                  value={searchQuery || ''}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className={`w-full border rounded-xl pl-10 pr-4 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-brand-gold ${viewMode === 'reels' ? 'bg-white/5 border-white/10 text-white' : 'bg-butter border-brand-brown/10 text-brand-brown'}`}
                 />
@@ -235,6 +237,20 @@ export const ProductReels: React.FC<ProductReelsProps> = ({
           </div>
         </div>
       )}
+
+      {/* Copy Toast */}
+      <AnimatePresence>
+        {copyToast && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            className="fixed bottom-24 left-1/2 -translate-x-1/2 z-[90] bg-brand-gold text-brand-brown px-5 py-2.5 rounded-full shadow-2xl font-bold text-xs tracking-wider uppercase border border-brand-brown/10"
+          >
+            Link Copied to Clipboard! 🛍️
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

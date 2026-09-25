@@ -106,7 +106,7 @@ export const Checkout: React.FC<CheckoutProps> = ({ cartItems, onSuccess }) => {
               type="text"
               className={`w-full bg-butter border ${errors.fullName ? 'border-red-500' : 'border-brand-brown/10'} rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-gold transition-all`}
               placeholder="John Doe"
-              value={formData.fullName}
+              value={formData.fullName || ''}
               onChange={e => {
                 setFormData({...formData, fullName: e.target.value});
                 if (errors.fullName) setErrors({...errors, fullName: ''});
@@ -121,7 +121,7 @@ export const Checkout: React.FC<CheckoutProps> = ({ cartItems, onSuccess }) => {
               type="tel"
               className={`w-full bg-butter border ${errors.phone ? 'border-red-500' : 'border-brand-brown/10'} rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-gold transition-all`}
               placeholder="0801 234 5678"
-              value={formData.phone}
+              value={formData.phone || ''}
               onChange={e => {
                 setFormData({...formData, phone: e.target.value});
                 if (errors.phone) setErrors({...errors, phone: ''});
@@ -136,7 +136,7 @@ export const Checkout: React.FC<CheckoutProps> = ({ cartItems, onSuccess }) => {
               rows={3}
               className={`w-full bg-butter border ${errors.address ? 'border-red-500' : 'border-brand-brown/10'} rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-gold transition-all resize-none`}
               placeholder="Your full delivery address"
-              value={formData.address}
+              value={formData.address || ''}
               onChange={e => {
                 setFormData({...formData, address: e.target.value});
                 if (errors.address) setErrors({...errors, address: ''});
@@ -148,12 +148,12 @@ export const Checkout: React.FC<CheckoutProps> = ({ cartItems, onSuccess }) => {
           <div>
             <label className="block text-sm font-bold text-brand-brown mb-2 uppercase tracking-wider">Special Instructions (Optional)</label>
             <textarea 
-              rows={2}
-              className="w-full bg-butter border border-brand-brown/10 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-gold transition-all resize-none"
-              placeholder="E.g. No onions, delivery time, etc."
-              value={formData.instructions}
-              onChange={e => setFormData({...formData, instructions: e.target.value})}
-            />
+               rows={2}
+               className="w-full bg-butter border border-brand-brown/10 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-gold transition-all resize-none"
+               placeholder="E.g. Shoe size (e.g. EU 43, UK 9), color preference, delivery time..."
+               value={formData.instructions || ''}
+               onChange={e => setFormData({...formData, instructions: e.target.value})}
+             />
           </div>
 
           <div className="pt-4">

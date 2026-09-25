@@ -25,4 +25,15 @@ export interface Order {
   status?: 'pending' | 'processing' | 'shipped' | 'delivered' | 'cancelled';
 }
 
-export type View = 'home' | 'menu' | 'cart' | 'about' | 'contact' | 'checkout' | 'orders' | 'reels' | 'wears' | 'best-sellers';
+export type View = 'home' | 'menu' | 'cart' | 'about' | 'contact' | 'checkout' | 'orders' | 'reels' | 'wears' | 'best-sellers' | 'vendor' | 'admin';
+
+export interface AuditLog {
+  id: string;
+  productId: string;
+  productName: string;
+  productType: string;
+  category: string;
+  price: number;
+  deletedBy: string;
+  deletedAt: any;
+}

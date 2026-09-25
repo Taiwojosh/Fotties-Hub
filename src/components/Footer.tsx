@@ -1,6 +1,6 @@
 import React from 'react';
 import { Instagram, Facebook, Phone, Mail, MapPin, Zap } from 'lucide-react';
-import { WHATSAPP_NUMBER, EMAIL } from '../constants';
+import { WHATSAPP_NUMBER, EMAIL, BRAND_LOGO_URL } from '../constants';
 import { View } from '../types';
 
 interface FooterProps {
@@ -25,7 +25,7 @@ export const Footer: React.FC<FooterProps> = ({ setView }) => {
           <div className="col-span-1 md:col-span-1 flex flex-col items-start text-left">
             {!logoError ? (
               <img 
-                src="https://ik.imagekit.io/ifektive/Publick/20260516_091707.png?updatedAt=1779199590151" 
+                src={BRAND_LOGO_URL} 
                 alt="Dams Collection Logo" 
                 className="h-20 object-contain mb-4 bg-white/10 rounded-xl p-2" 
                 onError={() => setLogoError(true)}

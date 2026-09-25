@@ -1,4 +1,5 @@
 import React, { Suspense } from 'react';
+import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { ArrowRight, Sparkle, Clock, ShieldCheck, Heart, Phone, Mail, MapPin, Loader2, ShoppingBasket, MessageSquare, Layout, Instagram, Facebook, Search, X, CheckCircle2, Play, Shirt, Flame } from 'lucide-react';
 import { Header } from './components/Header';
@@ -12,20 +13,27 @@ const Checkout = React.lazy(() => import('./components/Checkout').then(m => ({ d
 const OrderHistory = React.lazy(() => import('./components/OrderHistory').then(m => ({ default: m.OrderHistory })));
 const WhatsAppButton = React.lazy(() => import('./components/WhatsAppButton').then(m => ({ default: m.WhatsAppButton })));
 const PopularRank = React.lazy(() => import('./components/PopularRank').then(m => ({ default: m.PopularRank })));
+const VendorDashboard = React.lazy(() => import('./components/VendorDashboard').then(m => ({ default: m.VendorDashboard })));
+const ProductUploadForm = React.lazy(() => import('./components/ProductUploadForm').then(m => ({ default: m.ProductUploadForm })));
+const AdminLogin = React.lazy(() => import('./components/admin/AdminLogin').then(m => ({ default: m.AdminLogin })));
 
 import { Product, CartItem, View, Order } from './types';
 import { useProducts } from './hooks/useProducts';
 import { CATEGORIES, EMAIL, WHATSAPP_NUMBER } from './constants';
 
 export default function App() {
+  return (
+    <Router>
+      <AppContent />
+    </Router>
+  );
+}
+
+function AppContent() {
+  const navigate = useNavigate();
+  const location = useLocation();
   const { products, wears, bestSellers, categories, wearsCategories, loading: productsLoading } = useProducts();
   
-  const [view, setView] = React.useState<View>(() => {
-    if (typeof window !== 'undefined' && window.innerWidth < 768) {
-      return 'reels';
-    }
-    return 'home';
-  });
   const [isCartOpen, setIsCartOpen] = React.useState(false);
   const [cart, setCart] = React.useState<CartItem[]>(() => {
     try {
@@ -36,6 +44,14 @@ export default function App() {
       return [];
     }
   });
+
+  // Derived view based on location
+  const view = location.pathname === '/' ? 'home' : location.pathname.substring(1).split('/')[0] as View;
+
+  // Sync navigate to view
+  const setView = (newView: View) => {
+    navigate(newView === 'home' ? '/' : `/${newView}`);
+  };
   
   // Initialize orders from localStorage
   const [orders, setOrders] = React.useState<Order[]>(() => {
@@ -290,6 +306,90 @@ export default function App() {
                 </div>
               </section>
 
+              {/* Complete Footwear Collection */}
+              <section className="py-24 bg-butter/40 border-t border-brand-brown/5">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                  <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+                    <div>
+                      <span className="text-[10px] font-black uppercase tracking-[0.3em] text-brand-gold">
+                        Our Catalog
+                      </span>
+                      <h2 className="text-4xl md:text-5xl font-serif font-black text-brand-brown mt-1">
+                        Explore Collection
+                      </h2>
+                      <p className="text-brand-brown/60 text-sm mt-2">
+                        Handcrafted luxury leather palms, slides, and sandals.
+                      </p>
+                    </div>
+
+                    {/* Search & Category filter */}
+                    <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                      <div className="relative">
+                        <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 text-brand-brown/40" size={16} />
+                        <input 
+                          type="text" 
+                          placeholder="Search shoes..."
+                          value={searchQuery}
+                          onChange={(e) => setSearchQuery(e.target.value)}
+                          className="bg-white border border-brand-brown/10 rounded-full pl-10 pr-9 py-2.5 text-xs text-brand-brown focus:outline-none focus:ring-2 focus:ring-brand-gold w-full sm:w-56 transition-all"
+                        />
+                        {searchQuery && (
+                          <button 
+                            onClick={() => setSearchQuery('')}
+                            className="absolute right-3 top-1/2 -translate-y-1/2 text-brand-brown/40 hover:text-brand-brown"
+                          >
+                            <X size={14} />
+                          </button>
+                        )}
+                      </div>
+
+                      <button 
+                        onClick={() => setView('reels')}
+                        className="px-5 py-2.5 rounded-full bg-brand-brown text-brand-gold text-xs font-bold tracking-wider uppercase flex items-center justify-center gap-2 hover:bg-black transition-all shadow-md shrink-0"
+                      >
+                        <Play size={12} fill="currentColor" /> Fullscreen Shop
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Category Pills */}
+                  <div className="flex gap-2 overflow-x-auto no-scrollbar pb-6 mb-8">
+                    {categories.map((cat) => (
+                      <button
+                        key={cat}
+                        onClick={() => setCategory(cat)}
+                        className={`px-5 py-2 rounded-full text-xs font-bold tracking-wider uppercase transition-all whitespace-nowrap shadow-sm ${
+                          category === cat
+                            ? 'bg-brand-gold text-white shadow-brand-gold/30'
+                            : 'bg-white text-brand-brown/70 hover:bg-brand-brown/5 border border-brand-brown/10'
+                        }`}
+                      >
+                        {cat}
+                      </button>
+                    ))}
+                  </div>
+
+                  {/* Product Cards Grid */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    {filteredProducts.map((product) => (
+                      <ProductCard key={product.id} product={product} onAddToCart={addToCart} />
+                    ))}
+                  </div>
+
+                  {filteredProducts.length === 0 && (
+                    <div className="text-center py-16 bg-white/60 rounded-3xl border border-dashed border-brand-brown/15">
+                      <p className="font-serif italic text-lg text-brand-brown/60 mb-2">No footwear matching "{searchQuery}"</p>
+                      <button 
+                        onClick={() => { setSearchQuery(''); setCategory('All'); }}
+                        className="text-xs font-bold uppercase tracking-wider text-brand-gold underline underline-offset-4 hover:text-brand-brown"
+                      >
+                        Clear Filters
+                      </button>
+                    </div>
+                  )}
+                </div>
+              </section>
+
               {/* About Section Combined into Home */}
               <section id="about-section" className="py-24 bg-butter/30">
                 <div className="max-w-4xl mx-auto px-4">
@@ -388,6 +488,35 @@ export default function App() {
             >
               <Suspense fallback={<div className="py-24 text-center"><Loader2 className="animate-spin mx-auto text-brand-gold" size={32} /></div>}>
                 <Checkout cartItems={cart} onSuccess={(order) => clearCart(order)} />
+              </Suspense>
+            </motion.div>
+          )}
+
+          {view === 'vendor' && (
+            <motion.div
+              key="vendor"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="py-12"
+            >
+              <Suspense fallback={<div className="py-24 text-center"><Loader2 className="animate-spin mx-auto text-brand-gold" size={32} /></div>}>
+                <VendorDashboard />
+                <ProductUploadForm />
+              </Suspense>
+            </motion.div>
+          )}
+
+          {view === 'admin' && (
+            <motion.div
+              key="admin"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="py-12"
+            >
+              <Suspense fallback={<div className="py-24 text-center"><Loader2 className="animate-spin mx-auto text-brand-gold" size={32} /></div>}>
+                <AdminLogin />
               </Suspense>
             </motion.div>
           )}

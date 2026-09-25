@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { ShoppingBasket } from 'lucide-react';
 import { View } from '../types';
+import { BRAND_LOGO_URL } from '../constants';
 
 interface HeaderProps {
   currentView: View;
@@ -24,7 +25,7 @@ const Logo: React.FC<{ className?: string }> = ({ className = "h-16" }) => {
 
   return (
     <img 
-      src="https://ik.imagekit.io/ifektive/Publick/20260516_091707.png?updatedAt=1779199590151" 
+      src={BRAND_LOGO_URL} 
       alt="Dams Collection Logo" 
       className={`object-contain ${className}`}
       onError={() => {
